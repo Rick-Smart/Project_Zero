@@ -24,15 +24,10 @@ public class Account{
         return accountNumber;
     }
 
-    public void setAccountNumber(double accountNumber) {
+    public double getAccountBalance() {
         if(!this.signedIn){
             System.out.println("You do not have access to this account");
         }
-        this.accountNumber = accountNumber;
-    }
-
-
-    public double getAccountBalance() {
         return accountBalance;
     }
 
