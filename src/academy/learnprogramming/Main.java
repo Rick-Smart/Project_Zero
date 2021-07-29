@@ -1,14 +1,20 @@
 package academy.learnprogramming;
 
+
 public class Main {
 
     public static void main(String[] args) {
 
-	Account ricksAccount = new Account(123456, "Rick", 100.00);
+        RoundingNumbers rounding = new RoundingNumbers();
 
-	User rick = new User("Rick", "password");
+        User rick = new User("Rick", "password");
 
-	
+        System.out.println(rick.isLoggedIn());
+
+        Account ricksAccount = new Account(100.00, rick.isLoggedIn());
+
+        System.out.println("account balance: " + rounding.getNumber(ricksAccount.getAccountBalance()));
+
 
     }
 }

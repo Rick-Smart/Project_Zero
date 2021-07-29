@@ -1,36 +1,36 @@
 package academy.learnprogramming;
 
 
+import java.math.BigDecimal;
 
 public class Account{
 
-    private int accountNumber;
-    private String accountHolder;
+    private double accountNumber;
     private double accountBalance;
-    private boolean isSignedIn = false;
+    private boolean signedIn;
 
 
-    public Account(int accountNumber, String accountHolder, double accountBalance){
-        this.accountNumber = accountNumber;
-        this.accountHolder = accountHolder;
+
+    public Account(double accountBalance, boolean signedIn){
+        this.accountNumber = Math.random() * 10000000;
         this.accountBalance = accountBalance;
+        this.signedIn = signedIn;
     }
 
-    public int getAccountNumber() {
+    public double getAccountNumber() {
+        if(!this.signedIn){
+            System.out.println("You do not have access to this account");
+        }
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(double accountNumber) {
+        if(!this.signedIn){
+            System.out.println("You do not have access to this account");
+        }
         this.accountNumber = accountNumber;
     }
 
-    public String getAccountHolder() {
-        return accountHolder;
-    }
-
-    public void setAccountHolder(String accountHolder) {
-        this.accountHolder = accountHolder;
-    }
 
     public double getAccountBalance() {
         return accountBalance;
@@ -40,13 +40,6 @@ public class Account{
         this.accountBalance = accountBalance;
     }
 
-    public boolean GetIsSignedIn() {
-        return isSignedIn;
-    }
-
-    public void setSignedIn(boolean signedIn) {
-        isSignedIn = signedIn;
-    }
 
     public void deposit(double money){
         this.accountBalance += money;
@@ -56,7 +49,9 @@ public class Account{
     public void withdraw(double money){
         if(money<accountBalance){
             accountBalance -= money;
-            System.out.println(this.accountBalance);
+            System.out.println("Your account balance after withdrawal: -" +money + " is: "+this.accountBalance);
+        } else {
+            System.out.println("insufficient funds. Your current balance is: " + accountBalance);
         }
     }
 
